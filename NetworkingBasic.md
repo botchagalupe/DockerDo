@@ -3,20 +3,21 @@ Docker Basic Networking
 
 ** Setup **
 
-
      sudo apt-get install -y bridge-utils curl
      docker run -d --name db -p 3306:3306 mysql
      docker run -d --name wp1 -p 80:80 wordpress
      docker run -d --name wp2 -p 81:80 wordpress
 
-**Commands **
+**Commands**
 
      ip a  ( explain eth0=nat eth1 my ip, docker0= bridge)  (docker0 sunset /16 65k)
 
     ip a show docker0
 
-**explain docker0 (this is a virtual bridge and the IP is the gateway for all contianers on this docker host) **
-**â€¦ 172.17.42.1/16**
+**Explain docker0 (this is a virtual bridge and the IP is the gateway for all contianers
+ on this docker host)**
+
+**172.17.42.1/16**
 
      docker run -itd â€”name u1 ubuntu
      docker exec u1 ip a
@@ -82,5 +83,5 @@ Docker Basic Networking
 
      sudo service haproxy reload 
 
-**hit 1936*
+**hit 1936**
 

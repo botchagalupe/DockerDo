@@ -2,6 +2,7 @@ Docker Swarm
 -------------------
 
 **Setup** 
+
 ```
 docker-machine create --driver virtualbox dev1
 
@@ -15,6 +16,7 @@ docker run swarm     #(get help)
 ```
 
 **Create a Cluster** 
+
 ```
 sid=$(docker run swarm create) 
 
@@ -23,6 +25,7 @@ files $ echo $sid
 ```
 
 **Create the Swarm Manager**
+
 ```
 docker-machine create -d virtualbox --swarm --swarm-master --swarm-discovery token://$sid swarm-master
 
@@ -36,6 +39,7 @@ docker info
 ```
 
 **Create Swarm Nodes**
+
 ```
 docker-machine create -d virtualbox --engine-label itype=frontend --swarm --swarm-discovery token://$sid swarm-node-01
 
@@ -57,7 +61,9 @@ docker run swarm list token://$sid
 
 docker ps     #(no containers are running in the swarm)
 ```
+
 **Look at the Four Nodes**
+
 ```
 docker-machine ls
 
@@ -79,6 +85,7 @@ docker ps
 ```
 
 **Running Docker Instances with Swarm  (explain Spead vs Binpack**
+
 ```
 eval "$(docker-machine env --swarm swarm-master)"
 
@@ -94,7 +101,9 @@ docker ps
 
 docker run -itd --name engmgr-c -e affinity:container==engmgr ubuntu
 ```
+
 **Cleanup**
+
 ```
 docker-machine kill $(docker-machine ls -q)
 

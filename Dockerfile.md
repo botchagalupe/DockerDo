@@ -6,6 +6,7 @@ Docker Dockerfile
 **Basic Three Commands FROM, RUN and CMD** 
 
 apache-ex1
+
 ```
 FROM ubuntu:14.04
 
@@ -13,7 +14,9 @@ RUN apt-get -y install apache2
 
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 ```
+
 Commands
+
 ```
 docker build -f apache-dockerfile-ex1 -t apache-ex1 .
 
@@ -27,7 +30,9 @@ nid=$(docker inspect --format '{{.NetworkSettings.IPAddress}}' $cid)
     
 curl $nid
 ```
+
 **Caching** 
+
 ```
 docker build -f apache-dockerfile-ex1 -t apache-ex1 .
     
@@ -37,6 +42,7 @@ docker build --no-cache=true -f apache-dockerfile-ex1 -t apache-ex1 .
 **Alternate Syntax** 
 
 apache-ex2
+
 ```
 FROM ubuntu:14.04
 
@@ -46,6 +52,7 @@ CMD /usr/sbin/apache2ctl -D FOREGROUND
 ```
 
 **Finding index.html** 
+
 ```
 docker run -it apache-ex1 /bin/sh
 
@@ -55,6 +62,7 @@ find / -name index.html
 **More Commands ADD and EXPOSE** 
 
 apache-ex3
+
 ```
 FROM ubuntu:14.04
 
@@ -70,10 +78,13 @@ CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 ```
 
 index.html
+
 ```
 <h1>Docker Rocks!</h1>
 ```
+
 Commands
+
 ```
 cat index.html 
     
@@ -85,7 +96,9 @@ nid=$(docker inspect --format '{{.NetworkSettings.IPAddress}}' $cid)
     
 curl $nid
 ```
+
 Show from Web Browser 
+
 ```
 ip a show eth1
 
@@ -95,6 +108,7 @@ docker ps -a
 **Volume Command** 
 
 apache-ex4
+
 ```
 FROM ubuntu:14.04
 
@@ -110,7 +124,9 @@ EXPOSE 80
 
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 ```
+
 Commands
+
 ```
 docker build -f apache-dockerfile-ex4 -t apache-ex4 .
     
@@ -128,6 +144,7 @@ Modify index.html
 **Final Touches** 
 
 apache-ex5
+
 ```
 FROM ubuntu:14.04
 
@@ -148,7 +165,9 @@ EXPOSE 80
 ENTRYPOINT ["/usr/sbin/apache2ctl"]
 CMD ["-D", "FOREGROUND"]
 ```
+
 Show Using Variable for Refresh
+
 ```
 docker build -f apache-dockerfile-ex5 -t apache-ex5 .
     
@@ -156,6 +175,7 @@ docker build -f apache-dockerfile-ex5 -t apache-ex5 .
 ```
 
 Modify REFRESH VARIABLE in the Dockerfile
+
 ```
 docker build -f apache-dockerfile-ex5 -t apache-ex5 .
 ```    

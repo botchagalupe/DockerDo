@@ -49,9 +49,10 @@ CMD ["/bin/sh"]
     docker run -it -v /john1 myimage
     ls   (both directories) 
    
-   cd into bothâ€¦ 
+   cd into both directories
 
-   on docker host.. 
+   Switch back to the docker host.. 
+   
 ```   
 mkdir john3
 cd john3
@@ -60,7 +61,9 @@ touch file4
    
 docker run -it -v /vagrant/john3:/john3 myimage    (host needs to be abs path)
 ```    
-  ## good for testing src codeâ€¦ 
+
+  ## good for testing src code ##
+  
 ```
 cd john3
 ls
@@ -68,7 +71,9 @@ touch file5
 ls
 exit
 ```
+
   on docker host.. 
+  
 ```
 cd john3
 ls   (see files 3 and 4 and 5)

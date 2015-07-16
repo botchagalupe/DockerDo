@@ -4,6 +4,7 @@ Docker Machine
 ### Installation on OSX
 
 **Install Machine** 
+
 ```
 sudo wget --no-check-certificate -O /usr/local/bin/docker-machine https://github.com/docker/machine/releases/download/v0.3.0/docker-machine_darwin-amd64
 
@@ -11,7 +12,9 @@ sudo chmod +x /usr/local/bin/docker-machine
 
 docker-machine -v
 ```
+
 **Install Docker (client)** 
+
 ```
 sudo wget --no-check-certificate -O /usr/local/bin/docker https://get.docker.com/builds/Darwin/x86_64/docker-latest
 

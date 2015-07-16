@@ -4,6 +4,7 @@ Docker Compose
 ### Installation on OS X
 
 **Install Compose** 
+
 ```
 sudo wget --no-check-certificate https://github.com/docker/compose/releases/download/1.2.0/docker-compose-`uname -s`-`uname -m`
 
@@ -13,7 +14,9 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 docker-compose --version
 ```
+
 **Install Docker (client)  (if not already installed)** 
+
 ```
 sudo wget --no-check-certificate -O /usr/local/bin/docker https://get.docker.com/builds/Darwin/x86_64/docker-latest
 
@@ -21,9 +24,11 @@ sudo chmod +x /usr/local/bin/docker
 
 docker -v
 ```
+
 **Canonical Docker-Compose (Python/Redis) example**
 
 docker-compose.yml
+
 ```
 web:
   build: .
@@ -39,6 +44,7 @@ web:
 ```
 
 Dockerfile
+
 ```
 FROM python:2.7
 ADD . /code
@@ -47,6 +53,7 @@ RUN pip install -r requirements.txt
 ```
 
 app.py
+
 ```
 from flask import Flask
 from redis import Redis
@@ -64,12 +71,14 @@ if __name__ == "__main__":
 ```
 
 requirements.txt 
+
 ```
 flask
 redis
 ```
 
 Commands
+
 ```
 docker-compose up -d
 
@@ -83,6 +92,7 @@ docker-compose stop
 ```
 
 **Tomcat Sample example**
+
 ```
 docker pull tomcat
 
@@ -102,6 +112,7 @@ docker rm $cid
 **Now let's Compose it...**
 
 compose-ex1.yml
+
 ```
 tomcatapp:
   image: tomcat
@@ -110,6 +121,7 @@ tomcatapp:
 ```
 
 Commands
+
 ```
 docker-compose -f compose-ex1.yml up -d
 
@@ -127,12 +139,15 @@ docker-compose -f compose-ex1.yml rm
 **Now let's Compose it... (add a sample.war file)**
 
 Figure out where the webapps directory is
+
 ```
 docker run -it tomcat bash 
 
 ls   
 ```
+
 nginx.conf
+
 ```
 worker_processes 1;
 
@@ -185,6 +200,7 @@ http {
 ```
 
 compose-ex2.yml
+
 ```
 nginx:
   image: nginx
@@ -211,6 +227,7 @@ tomcatapp3:
 ```
 
 Commands
+
 ```
 export COMPOSE_FILE=compose-ex2.yml
 
